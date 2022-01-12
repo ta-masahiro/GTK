@@ -5,6 +5,8 @@
   <object class="GtkFileChooserDialog" id="opendialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Open File</property>
+    <property name="default_width">320</property>
+    <property name="default_height">260</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -16,12 +18,13 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="cancel">
-                <property name="label" translatable="yes">cancel</property>
+              <object class="GtkButton" id="button2">
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_cancel_clicked" swapped="no"/>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -30,12 +33,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="opendialo">
-                <property name="label" translatable="yes">open</property>
+              <object class="GtkButton" id="button1">
+                <property name="label">gtk-apply</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_open_clicked" swapped="no"/>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -55,6 +59,72 @@
         </child>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="-6">button2</action-widget>
+      <action-widget response="-3">button1</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkFileChooserDialog" id="savedialog">
+    <property name="can_focus">False</property>
+    <property name="default_width">320</property>
+    <property name="default_height">260</property>
+    <property name="type_hint">dialog</property>
+    <property name="action">save</property>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button3">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button4">
+                <property name="label">gtk-apply</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-6">button3</action-widget>
+      <action-widget response="-10">button4</action-widget>
+    </action-widgets>
   </object>
   <object class="GtkWindow" id="windows">
     <property name="can_focus">False</property>
@@ -90,7 +160,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_newitem_activate" swapped="no"/>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
@@ -100,7 +170,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_openitem_activate" swapped="no"/>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
@@ -110,6 +180,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
@@ -119,7 +190,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_saveasitem_activate" swapped="no"/>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
@@ -135,7 +206,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_quititem_activate" swapped="no"/>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                   </object>
@@ -238,7 +309,7 @@
             <property name="vexpand">False</property>
             <property name="shadow_type">in</property>
             <child>
-              <object class="GtkTextView">
+              <object class="GtkTextView" id="textview">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">False</property>
